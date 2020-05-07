@@ -65,12 +65,8 @@ with open(tweetidFile, 'r') as myfile:
 	if search is not None:
 		idList = search.split(',')
 
-# idList.sort() # sort the id list
-
-# for x in range(len(searchList)): # make sure the keyword list is importing correctly
-# 	print(searchList[x])
-
-auth = OAuthHandler(config.consumer_key, config.consumer_secret)
+#additional config file required containing consumer_key, consumer_secret, access_token, and access_secret acquired from Twitter
+auth = OAuthHandler(config.consumer_key, config.consumer_secret) 
 auth.set_access_token(config.access_token, config.access_secret)
 
 print("Connected to Twitter\n")
@@ -96,7 +92,7 @@ for keyword in searchList: #loop through the keyword list
 		
 		# for id in idList: # loop through the idList
 
-		if(result.lang == "en"): # only adds tweets in English to the csv since I cant read other languages
+		if(result.lang == "en"): # only adds tweets in English to the csv since I can't read tweets written in other languages
 
 			if result.id not in idList: # supposed to check for duplicates and filter them out, but duplicates keep popping up
 
